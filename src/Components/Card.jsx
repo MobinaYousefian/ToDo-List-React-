@@ -1,19 +1,11 @@
 import clsx from "clsx";
 
-function Card ({ children, onClose, disabled, ...props }) {
+function Card ({children, onClose, disabled, done}) {
     return (
-        <div className={clsx('card', {
-            'card--disabled' : disabled,
-            'card--enabled' : !disabled,
-        })} {...props}
-        >
-            <div className={'card__header'}>
-                <button className={'card__close-button'} onClick={onClose}>
-                    close
-                </button>
-            </div>
-
-            <div className={"card__content"}>
+        <div className={'card'}>
+            <div className={clsx("card__content", {
+                "done" : done
+            })}>
                 {children}
             </div>
         </div>

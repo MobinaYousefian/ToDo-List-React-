@@ -1,6 +1,6 @@
-import { TodoItem } from "./TodoItem";
+import {TodoItem} from "./TodoItem";
 
-export const List = ({ todos }) => {
+export const List = ({todos, handleDeleteItem, handleToggleItem}) => {
 
     if (!todos.length) {
         return (
@@ -10,10 +10,6 @@ export const List = ({ todos }) => {
         )
     }
 
-    const handleOnDelete = () => {
-
-    }
-
     return (
         <div>
             {todos.map((todos) => {
@@ -21,8 +17,9 @@ export const List = ({ todos }) => {
                     <TodoItem
                         key={todos.id}
                         title={todos.title}
-                        status={todos.status}
-                        onDelete={handleOnDelete}
+                        done={todos.done}
+                        onDelete={() => handleDeleteItem(todos.id)}
+                        onToggle={() => handleToggleItem(todos.id)}
                     />
                 )
             })}

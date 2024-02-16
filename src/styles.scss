@@ -1,26 +1,22 @@
+* {
+  font-size: 1.025rem;
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
 .done {
   text-decoration: line-through;
+  background-color: #d5e0d5;
 }
 
 .card {
-  background-color: azure;
+  background-color: #f8f8fd;
   border-radius: 8px;
-  border: 1px solid blueviolet;
+  border: 1px solid grey;
   overflow: hidden;
   margin-bottom: 16px;
-
-  &--disabled {
-    background-color: red;
-  }
-
-  %--enabled {
-    background-color: blueviolet;
-  }
-
-  &__header {
-    width: 100%;
-    background-color: antiquewhite;
-  }
 
   &__close-button {
     border: none;
@@ -30,5 +26,7 @@
 
   &__content {
     padding: 12px;
+    display: flex;
+    justify-content: space-between;
   }
 }

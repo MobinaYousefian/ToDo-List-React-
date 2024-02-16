@@ -1,18 +1,20 @@
 import Card from "./Card.jsx";
 import clsx from "clsx";
 
-export const TodoItem = ({ title, status, onDelete }) => {
+
+export const TodoItem = ({title, done, onDelete, onToggle}) => {
     return (
         <div>
-            <Card onClose={onDelete}>
+            <Card done={done}>
                 <div className={clsx({
-                    "done" : status === 'Done'
+                    "done": done
                 })}>
                     {title}
                 </div>
-                <button>
-                    {status !== "Done" ? "Done" : "Not Done Yet?"}
-                </button>
+                <div>
+                    <button onClick={onToggle}>✅</button>
+                    <button onClick={onDelete}>❌</button>
+                </div>
             </Card>
         </div>
     )

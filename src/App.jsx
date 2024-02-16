@@ -1,33 +1,18 @@
 import {useState} from 'react'
-import {todos} from "./Data.js";
 import {List} from "./Components/List";
+import {Input} from "./Components/Input";
+import {useTodoApp} from "./hooks/useTodoApp.js";
 
 function App() {
-    const [todoList, setTodoList] = useState(todos)
-    const [todoName, setTodoName] = useState('');
-
-    const onCardClose = () => {
-        console.log('Miad')
-    }
-
-    const handleAddTodo = () => {
-        setTodoList([...todoList, {
-            id : todoList.length + 1,
-            title: todoName,
-            status: 'Todo'
-        }])
-    }
+    const [todoList, handleAddTodo, handleDeleteItem, handleToggleItem] = useTodoApp()
 
     return (
         <div>
-            <input value={todoName} onChange={(e) => {
-                setTodoName(e.target.value)
-            }}/>
-            <button onClick={handleAddTodo}>
-                Add Todo item
-            </button>
-
-            <List todos={todoList}/>
+            <Input onTodoAdd={handleAddTodo}/>
+            <List todos={todoList}
+                  handleDeleteItem={handleDeleteItem}
+                  handleToggleItem={handleToggleItem}
+            />
         </div>
     )
 }
