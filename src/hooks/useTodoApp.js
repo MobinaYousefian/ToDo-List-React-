@@ -1,8 +1,10 @@
 import {useState} from "react";
+import {useLocalStorage} from "./useLocalStorage.js";
 
 export const useTodoApp = () => {
 
-    const [todoList, setTodoList] = useState([])
+    const [defaultList, { get, set}] = useLocalStorage('todos')
+    const [todoList, setTodoList] = useState([] || defaultList)
 
 
     const handleAddTodo = (todoName) => {
@@ -15,7 +17,9 @@ export const useTodoApp = () => {
                 done: false
             };
 
-            setTodoList([...todoList, newTodoListItem]);
+            const newTodos = [...todoList, newTodoListItem]
+            setTodoList(newTodos);
+            set('todos', newTodos);
         }else {
             alert("This item has already been added! Try a new one")
         }
@@ -24,24 +28,30 @@ export const useTodoApp = () => {
     const handleDeleteItem = (todoId) => {
         const newList = todoList.filter(({id}) => id !== todoId)
         setTodoList(newList);
+        set('todos', newList);
     };
 
     const handleToggleItem = (todoId) => {
-        setTodoList(todoList.map((item) => {
+        const toggleItems = todoList.map((item) => {
             if (item.id === todoId) item.done = !item.done
             return item
-        }))
+        })
+        setTodoList(toggleItems);
+        set('todos', toggleItems);
     };
 
     const handleToggleAll = () => {
-        setTodoList(todoList.map( (item) => {
+        const toggleAllItems = todoList.map( (item) => {
             item.done = true
             return item
-        }))
+        })
+        setTodoList(toggleAllItems);
+        set('todos', toggleAllItems);
     }
 
     const handleDeleteAll = () => {
         setTodoList([])
+        set('todos', []);
     }
 
 
