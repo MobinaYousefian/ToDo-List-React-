@@ -2,8 +2,13 @@
   font-size: 1.025rem;
 }
 
-.input {
-  margin-bottom: 15px;
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+.margin-x {
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .done {
@@ -26,7 +31,14 @@
 
   &__content {
     padding: 12px;
-    display: flex;
     justify-content: space-between;
   }
+}
+
+.flex {
+  display: flex;
+}
+
+.right {
+  justify-content: right;
 }

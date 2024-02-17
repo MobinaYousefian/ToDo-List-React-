@@ -1,9 +1,9 @@
 import clsx from "clsx";
 
-function Card ({children, onClose, disabled, done}) {
+function Card ({children, done}) {
     return (
         <div className={'card'}>
-            <div className={clsx("card__content", {
+            <div className={clsx("card__content", "flex", {
                 "done" : done
             })}>
                 {children}

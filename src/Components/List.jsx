@@ -1,6 +1,6 @@
 import {TodoItem} from "./TodoItem";
 
-export const List = ({todos, handleDeleteItem, handleToggleItem}) => {
+export const List = ({todos, handleDeleteItem, handleToggleItem, searchString}) => {
 
     if (!todos.length) {
         return (
@@ -12,7 +12,9 @@ export const List = ({todos, handleDeleteItem, handleToggleItem}) => {
 
     return (
         <div>
-            {todos.map((todos) => {
+            {todos
+                // .filter( ({title}) => {title.includes(searchString)})
+                .map((todos) => {
                 return (
                     <TodoItem
                         key={todos.id}

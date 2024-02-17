@@ -4,14 +4,21 @@ export const useTodoApp = () => {
 
     const [todoList, setTodoList] = useState([])
 
-    const handleAddTodo = (todoName) => {
-        const newtodoListItem = {
-            id: todoList.length + 1,
-            title: todoName,
-            done: false
-        };
 
-        setTodoList([...todoList, newtodoListItem]);
+    const handleAddTodo = (todoName) => {
+        const isNew = todoList.find((item) => item.title === todoName)
+
+        if (!isNew) {
+            const newTodoListItem = {
+                id: todoList.length + 1,
+                title: todoName,
+                done: false
+            };
+
+            setTodoList([...todoList, newTodoListItem]);
+        }else {
+            alert("This item has already been added! Try a new one")
+        }
     };
 
     const handleDeleteItem = (todoId) => {
@@ -26,10 +33,24 @@ export const useTodoApp = () => {
         }))
     };
 
+    const handleToggleAll = () => {
+        setTodoList(todoList.map( (item) => {
+            item.done = true
+            return item
+        }))
+    }
+
+    const handleDeleteAll = () => {
+        setTodoList([])
+    }
+
+
     return [
         todoList,
         handleAddTodo,
         handleDeleteItem,
-        handleToggleItem
+        handleToggleItem,
+        handleToggleAll,
+        handleDeleteAll
     ]
 }
