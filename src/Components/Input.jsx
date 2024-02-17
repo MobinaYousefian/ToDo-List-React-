@@ -6,6 +6,7 @@ export const Input = ({onTodoAdd}) => {
     const handleOnClick = (e) => {
         e.preventDefault();
         onTodoAdd(todoName);
+        setTodoName('')
     }
 
     return (
