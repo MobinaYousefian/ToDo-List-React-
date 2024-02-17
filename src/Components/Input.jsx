@@ -7,6 +7,10 @@ export const Input = ({onTodoAdd}) => {
         e.preventDefault();
         onTodoAdd(todoName);
         setTodoName('')
+        // if (todoName.trim()) {      //ye rahe dige braye inke bdone matn item nsaze.
+        //     onTodoAdd(todoName.trim());
+        //     setTodoName('')
+        // }
     }
 
     return (
@@ -14,7 +18,7 @@ export const Input = ({onTodoAdd}) => {
             <input value={todoName} onChange={(e) => {
                 setTodoName(e.target.value)
             }}/>
-            <button onClick={handleOnClick}>
+            <button onClick={handleOnClick} disabled={!todoName.trim()}>
                 Add new item
             </button>
         </div>

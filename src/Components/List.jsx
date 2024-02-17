@@ -5,7 +5,7 @@ export const List = ({todos, handleDeleteItem, handleToggleItem}) => {
     if (!todos.length) {
         return (
             <div>
-                No todo Item
+                No To-Do Item
             </div>
         )
     }
