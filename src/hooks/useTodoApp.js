@@ -3,7 +3,7 @@ import {useLocalStorage} from "./useLocalStorage.js";
 
 export const useTodoApp = () => {
 
-    const [defaultList, { get, set}] = useLocalStorage('todos')
+    const [defaultList, {set}] = useLocalStorage('todos')
     const [todoList, setTodoList] = useState([] || defaultList)
 
 
